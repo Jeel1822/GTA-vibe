@@ -1,0 +1,32 @@
+channel_id: gta_vibe
+display_name: "GTA Vibe"
+niche: "GTA gameplay highlights, funny moments and chaos"
+pipeline: clipping            # handled by src/clipper.py, not the script/TTS pipeline
+
+# Shorts only -- long-form is not used for clipping channels.
+longform_enabled: false
+upload_time_utc: "13:30"      # unused while longform_enabled is false (scheduler needs the key)
+shorts_upload_times_utc: ["09:30", "14:30", "19:30"]
+languages: ["en"]
+
+# --- Clip settings -----------------------------------------------------
+clip_min_seconds: 20
+clip_max_seconds: 45          # YouTube Shorts hard cap is 60s; stay under it
+clip_pre_roll_seconds: 12     # lead-in before the loudest moment
+skip_head_seconds: 30         # ignore intros
+skip_tail_seconds: 30         # ignore outros / end screens
+hook_text: true               # 3-second on-screen hook title
+brand_tag: "@GTAVibe"
+
+# --- Source rights (IMPORTANT) -------------------------------------------
+# require_cc_license: URL sources must carry a Creative Commons licence on
+#   YouTube, otherwise they are skipped. Credit is added to the description.
+# own_content: set to true ONLY if you own, or have written permission for,
+#   every source you list (your own gameplay, a friend/creator who said yes).
+require_cc_license: true
+own_content: false
+
+category_id: "20"             # YouTube category: Gaming
+tags: ["gta", "gta 6", "gta 5", "gta online", "gaming", "gameplay", "shorts", "funny moments"]
+hashtags: ["GTA", "GTA6", "GTAOnline", "Gaming"]
+made_for_kids: false

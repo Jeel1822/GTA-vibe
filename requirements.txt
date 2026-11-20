@@ -1,0 +1,11 @@
+pyyaml
+edge-tts
+requests
+google-genai
+google-auth
+google-auth-oauthlib
+google-api-python-client
+Pillow
+python-dotenv
+yt-dlp
+numpy
