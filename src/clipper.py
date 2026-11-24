@@ -105,11 +105,24 @@ def _ytdlp_extra_args() -> list[str]:
     return ["--cookies", str(cookies)] if cookies.exists() else []
 
 
+def _is_single_video_url(url: str) -> bool:
+    """Channel / playlist URLs (youtube.com/@name, /channel/, /playlist) are
+    NOT single videos: yt-dlp -J on them tries to enumerate every upload and
+    can hang for many minutes. Only watch/shorts/youtu.be links are accepted."""
+    return any(k in url for k in ("watch?v=", "youtu.be/", "/shorts/", "/live/"))
+
+
 def _fetch_meta(url: str) -> dict:
-    res = subprocess.run(
-        _ytdlp_cmd() + _ytdlp_extra_args() + ["-J", "--no-playlist", url],
-        capture_output=True, text=True,
-    )
+    if not _is_single_video_url(url):
+        raise SkipSource(f"{url}: not a single-video URL (channel/playlist links "
+                         f"are not supported; paste individual video links)")
+    try:
+        res = subprocess.run(
+            _ytdlp_cmd() + _ytdlp_extra_args() + ["-J", "--no-playlist", url],
+            capture_output=True, text=True, timeout=120,
+        )
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(f"yt-dlp metadata timed out for {url}")
     if res.returncode != 0:
         raise RuntimeError(f"yt-dlp metadata failed for {url}: {res.stderr.strip()[-400:]}")
     return json.loads(res.stdout)
@@ -337,7 +350,7 @@ def prepare_clip(source: str, config: dict, state: dict, tmp: Path
         subprocess.run(
             _ytdlp_cmd() + _ytdlp_extra_args() +
             ["-f", "bestaudio", "--no-playlist", "-o", audio_tpl, source],
-            check=True,
+            check=True, timeout=900,
         )
         audio = next(tmp.glob("audio.*"))
         loud = _loudness_series(str(audio), hop)
@@ -353,7 +366,7 @@ def prepare_clip(source: str, config: dict, state: dict, tmp: Path
              "--merge-output-format", "mp4", "--no-playlist",
              "--download-sections", f"*{start}-{end}", "--force-keyframes-at-cuts",
              "-o", out_tpl, source],
-            check=True,
+            check=True, timeout=900,
         )
         raw = next(p for p in tmp.glob("raw.*") if p.suffix.lower() in VIDEO_EXTS)
         return str(raw), meta, (start, end), sid
