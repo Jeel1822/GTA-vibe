@@ -1,3 +1,2 @@
-# One YouTube video URL per line. Each must be Creative Commons licensed,
-# or yours / cleared in writing (then set own_content: true in gta_vibe.yaml).
-https://www.youtube.com/watch?v=hwSg39yIBGU
+# URL sources disabled: YouTube blocks GitHub's servers without cookies.
+# Using local videos in sources/gta_vibe/ instead (no licence check, so only use footage you own or have written permission for).
