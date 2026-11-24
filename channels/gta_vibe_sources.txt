@@ -1,7 +1,3 @@
-# Top viral GTA streamers and RP creators (Creative Commons / Public highlights)
-# Add official channels and community highlight archives here:
-https://www.youtube.com/@KaiCenat
-https://www.youtube.com/@xQcOW
-https://www.youtube.com/@Fanum
-https://www.youtube.com/@GTAgent
-https://www.youtube.com/@NoPixelOfficial
+# One YouTube video URL per line. Each must be Creative Commons licensed,
+# or yours / cleared in writing (then set own_content: true in gta_vibe.yaml).
+https://www.youtube.com/watch?v=hwSg39yIBGU
