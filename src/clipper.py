@@ -190,7 +190,7 @@ def find_best_window(
             continue
         a, b = int(start / hop), int(end / hop)
         sustained = float(np.mean(zs[a:b]))
-        score = float(zs[i]) + 0.5 * sustained
+        score = float(zs[i]) + 0.1 * sustained
         if best is None or score > best[2]:
             best = (round(start, 2), round(end, 2), round(score, 3))
         if best and len(used_ranges) == 0:
