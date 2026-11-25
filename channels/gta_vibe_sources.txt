@@ -1,2 +1,3 @@
-# URL sources disabled: YouTube blocks GitHub's servers without cookies.
-# Using local videos in sources/gta_vibe/ instead (no licence check, so only use footage you own or have written permission for).
+https://www.youtube.com/watch?v=hwSg39yIBGU
+https://www.youtube.com/watch?v=5V430M8xyTw
+https://www.youtube.com/watch?v=0kG7iP1q04w

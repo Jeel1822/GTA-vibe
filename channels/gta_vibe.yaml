@@ -23,10 +23,10 @@ brand_tag: "@GTAVibe"
 #   YouTube, otherwise they are skipped. Credit is added to the description.
 # own_content: set to true ONLY if you own, or have written permission for,
 #   every source you list (your own gameplay, a friend/creator who said yes).
-require_cc_license: true
-own_content: false
+require_cc_license: false
+own_content: true
 
 category_id: "20"             # YouTube category: Gaming
-tags: ["gta", "gta 6", "gta 5", "gta online", "gaming", "gameplay", "shorts", "funny moments"]
-hashtags: ["GTA", "GTA6", "GTAOnline", "Gaming"]
+tags: ["gta", "gta 6", "gta 5", "gta online", "gaming", "gameplay", "shorts", "funny moments", "fails", "police chase"]
+hashtags: ["GTA", "GTA6", "GTAOnline", "Gaming", "GTAFails", "Shorts"]
 made_for_kids: false
